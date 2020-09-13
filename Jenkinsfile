@@ -35,9 +35,9 @@ pipeline {
                 sh """
                 #!/bin/bash
                 dotnet build-server shutdown
-                dotnet /sonar-scanner/SonarScanner.MSBuild.dll begin /k:"FirstCoreProject" /d:sonar.host.url=http://172.18.0.4:9000 /d:sonar.login="e48ea67ef56e7fe28b84c6d72abe4ff3f43538c5" /d:sonar.cs.opencover.reportsPaths="FirstCoreProject/coverage.opencover.xml" /d:sonar.coverage.exclusions="FirstCoreProject/Test1.cs"
+                dotnet /sonar-scanner/SonarScanner.MSBuild.dll begin /k:"FirstCoreProject" /d:sonar.host.url=http://172.18.0.4:9000 /d:sonar.login="89766ff7ff2ae765e271a71d9b16626b71335e97" /d:sonar.cs.opencover.reportsPaths="FirstCoreProject/coverage.opencover.xml" /d:sonar.coverage.exclusions="FirstCoreProject/Test1.cs"
                 dotnet build FirstSolution.sln
-                dotnet /sonar-scanner/SonarScanner.MSBuild.dll end /d:sonar.login="e48ea67ef56e7fe28b84c6d72abe4ff3f43538c5"
+                dotnet /sonar-scanner/SonarScanner.MSBuild.dll end /d:sonar.login="89766ff7ff2ae765e271a71d9b16626b71335e97"
                 """
             }
         }
