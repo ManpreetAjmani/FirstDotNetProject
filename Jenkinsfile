@@ -14,22 +14,7 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Build') {
-            steps {
-                sh """
-                #!/bin/bash
-                dotnet build FirstSolution.sln
-                """
-            }
-        }
-        stage('Test') {
-            steps {
-                sh """
-                #!/bin/bash
-                dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
-                """
-            }
-        }
+        
         stage('Sonar') {
             steps {
                 withSonarQubeEnv('sonarqube') {
@@ -51,6 +36,23 @@ pipeline {
               }
             }
         }
+        stage('Build') {
+            steps {
+                sh """
+                #!/bin/bash
+                dotnet build FirstSolution.sln
+                """
+            }
+        }
+        stage('Test') {
+            steps {
+                sh """
+                #!/bin/bash
+                dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+                """
+            }
+        }
+        
 
         stage('Run') {
             steps {
